@@ -4,7 +4,8 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://192.168.252.131:8848
+        server-addr: http://192.168.252.129:8848
+        namespace: 987b463c-15a4-4d3a-9049-64abf322d67c
   main:
     allow-bean-definition-overriding: true
   jackson:
