@@ -9,15 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>nacos-provider</artifactId>
+    <artifactId>gateway</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
         <!-- Spring Boot Begin -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -28,6 +24,13 @@
             <scope>test</scope>
         </dependency>
         <!-- Spring Boot End -->
+
+        <!-- Spring Cloud Begin -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <!-- Spring Cloud End -->
 
         <!-- Spring Cloud Alibaba Begin -->
         <dependency>
@@ -48,7 +51,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>xyz.lwz.provider.NacosProviderApplication</mainClass>
+                    <mainClass>xyz.lwz.gateway.GatewayApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
