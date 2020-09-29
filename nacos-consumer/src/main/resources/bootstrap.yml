@@ -1,6 +1,6 @@
 spring:
   application:
-    name: nacos-provider
+    name: nacos-consumer
   # 指定开发环境
   profiles:
     active: dev
