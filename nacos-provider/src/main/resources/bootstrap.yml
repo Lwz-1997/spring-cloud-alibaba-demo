@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: nacos-provider
+  # 指定开发环境
+  profiles:
+    active: dev
+  cloud:
+    # 使用 Nacos 作为服务注册发现
+    nacos:
+      config:
+        # 服务器地址
+        server-addr: http://192.168.252.131:8848
+        # 默认为Public命名空间,可以省略不写
+        namespace: Public
+        # 指定配置群组 --如果是Public命名空间 则可以省略群组配置
+        group: DEFAULT_GROUP
+        # 文件名 -- 如果没有配置则默认为 ${spring.appliction.name}
+        #prefix: member
+        file-extension: yaml
