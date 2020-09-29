@@ -23,6 +23,5 @@
 hs_err_pid*
 
 # IEDA配置文件
-spring-cloud-alibaba-demo.iml
+*.iml
 /.idea/
-/nacos-provider/nacos-provider.iml
