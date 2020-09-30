@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 9003
 spring:
   main:
     allow-bean-definition-overriding: true
@@ -11,9 +11,13 @@ spring:
   resources:
     add-mappings: false
 
-feign:
-  sentinel:
-    enabled: true
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://192.168.252.129:8848
+
 
 # 服务监控检查
 management:
