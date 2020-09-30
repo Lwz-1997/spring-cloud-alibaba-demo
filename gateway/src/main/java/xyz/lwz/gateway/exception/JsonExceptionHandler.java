@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +50,7 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
     /**
      * 存储处理异常后的信息
      */
-    private ThreadLocal<Map<String, Object>> exceptionHandlerResult = new ThreadLocal<>();
+    private final ThreadLocal<Map<String, Object>> exceptionHandlerResult = new ThreadLocal<>();
 
     /**
      * 参考AbstractErrorWebExceptionHandler
@@ -75,26 +76,27 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
     }
 
     @Override
-    public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
+    @Nonnull
+    public Mono<Void> handle( ServerWebExchange exchange, Throwable ex) {
         // 按照异常类型进行处理
         HttpStatus httpStatus;
         String body;
         if (ex instanceof NotFoundException) {
             httpStatus = HttpStatus.NOT_FOUND;
-            body = "Service Not Found";
+            body = httpStatus.getReasonPhrase();
         } else if (ex instanceof ResponseStatusException) {
             ResponseStatusException responseStatusException = (ResponseStatusException) ex;
             httpStatus = responseStatusException.getStatus();
             body = responseStatusException.getMessage();
         } else {
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-            body = "Internal Server Error";
+            body = httpStatus.getReasonPhrase();
         }
         //封装响应体,此body可修改为自己的jsonBody
         Map<String, Object> result = new HashMap<>(2, 1);
         result.put("httpStatus", httpStatus);
 
-        String msg = "{\"code\":" + httpStatus.value() + ",\"message\": \"" + httpStatus.getReasonPhrase() + "\"}";
+        String msg = "{\"code\":" + httpStatus.value() + ",\"message\": \"" + body + "\"}";
         result.put("body", msg);
         //错误记录
         ServerHttpRequest request = exchange.getRequest();
@@ -119,7 +121,7 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
         Map<String, Object> result = exceptionHandlerResult.get();
         return ServerResponse.status((HttpStatus) result.get("httpStatus"))
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromObject(result.get("body")));
+                .body(BodyInserters.fromValue(result.get("body")));
     }
 
     /**
@@ -137,11 +139,13 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
     private class ResponseContext implements ServerResponse.Context {
 
         @Override
+        @Nonnull
         public List<HttpMessageWriter<?>> messageWriters() {
             return JsonExceptionHandler.this.messageWriters;
         }
 
         @Override
+        @Nonnull
         public List<ViewResolver> viewResolvers() {
             return JsonExceptionHandler.this.viewResolvers;
         }
