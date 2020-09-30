@@ -23,6 +23,7 @@
         <module>dubbo-provider</module>
         <module>dubbo-api</module>
         <module>dubbo-consumer</module>
+        <module>redis-demo</module>
     </modules>
 
     <properties>
