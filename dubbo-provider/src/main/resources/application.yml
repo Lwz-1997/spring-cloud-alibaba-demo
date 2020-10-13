@@ -5,8 +5,10 @@ dubbo:
     # 这个属性必须有,代表被扫描暴露服务的包
     base-packages: xyz.lwz.provider.service
   protocol:
+    #    http   RMI  Redis   H  dubbo
     name: dubbo
-    port: -1
+    port: -1  # 从20880开始找,如果端口被占用,就自增1
+  #  zookeeper  redis  nacos  Eureka
   registry:
     address: nacos://192.168.252.131:8848
   config-center:
