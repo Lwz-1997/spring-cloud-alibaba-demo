@@ -1,6 +1,7 @@
 package xyz.lwz.redis;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,7 +16,7 @@ import javax.annotation.Resource;
  **/
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Test {
+public class TestRedis {
 
     @Resource
     private RedisUtils redisUtils;
@@ -32,7 +33,7 @@ public class Test {
     /**
      * 执行获取值
      */
-    @org.junit.Test
+    @Test
     public void test(){
         System.out.println(redisUtils.get("aaa"));
     }
