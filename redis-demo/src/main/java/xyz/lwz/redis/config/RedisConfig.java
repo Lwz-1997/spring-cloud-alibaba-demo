@@ -30,9 +30,12 @@ public class RedisConfig {
         // 使用Jackson2JsonRedisSerialize 替换默认序列化(默认采用的是JDK序列化)
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
 
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        // StringRedis序列化方式
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+
+        redisTemplate.setKeySerializer(stringRedisSerializer);
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        redisTemplate.setHashKeySerializer(stringRedisSerializer);
         redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
         // 开启事务
         redisTemplate.setEnableTransactionSupport(true);
