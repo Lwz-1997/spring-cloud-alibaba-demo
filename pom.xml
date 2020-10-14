@@ -24,6 +24,7 @@
         <module>dubbo-api</module>
         <module>dubbo-consumer</module>
         <module>redis-demo</module>
+        <module>mybatis-plus-generator</module>
     </modules>
 
     <properties>
