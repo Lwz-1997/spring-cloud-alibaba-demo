@@ -26,7 +26,7 @@ public class TestRedis {
      */
     @Before
     public void setUp(){
-        redisUtils.set("aaa", new User(1, "lwz"));
+        redisUtils.set("user", new User(1, "lwz"));
         System.out.println("插入值成功");
     }
 
@@ -35,6 +35,6 @@ public class TestRedis {
      */
     @Test
     public void test(){
-        System.out.println(redisUtils.get("aaa"));
+        System.out.println(redisUtils.get("user"));
     }
 }
