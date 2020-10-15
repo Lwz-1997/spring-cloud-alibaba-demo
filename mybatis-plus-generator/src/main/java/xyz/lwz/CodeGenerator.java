@@ -49,6 +49,11 @@ public class CodeGenerator {
     private static final String SUPER_CONTROLLER_CLASS = PACKAGE_NAME + ".common.BaseController" ;
 
     /**
+     * service基础类
+     */
+    private static final String SUPER_SERVICE_CLASS = PACKAGE_NAME + ".common.BaseService" ;
+
+    /**
      * entity基础类
      */
     private static final String SUPER_ENTITY_CLASS = PACKAGE_NAME + ".common.BaseEntity" ;
@@ -132,13 +137,17 @@ public class CodeGenerator {
         globalConfig
                 .setBaseColumnList(true)
                 .setBaseResultMap(true)
+                // 开启 ActiveRecord 模式
                 .setActiveRecord(false)
-                //作者
+                // 作者
                 .setAuthor(AUTHOR)
-                //设置输出路径
+                // 设置输出路径
                 .setOutputDir(getOutputDir())
-                .setFileOverride(true);
-        //设置service名
+                // 是否覆盖已有文件
+                .setFileOverride(true)
+                // 是否打开输出目录
+                .setOpen(false);
+        // 设置service名
         globalConfig.setServiceName("%sService" );
         return globalConfig;
     }
@@ -164,15 +173,18 @@ public class CodeGenerator {
         return new StrategyConfig()
                 // 全局大写命名 ORACLE 注意
                 .setCapitalMode(true)
-                // 从数据库表到文件的命名策略
+                // 表名生成策略 下划线转驼峰
                 .setNaming(NamingStrategy.underline_to_camel)
+                // 表字段生成策略 下划线转驼峰
+                .setColumnNaming(NamingStrategy.underline_to_camel)
                 // 需要生成的的表名，多个表名传数组
                 .setInclude(tableNames)
                 // 公共父类
-                .setSuperControllerClass(SUPER_CONTROLLER_CLASS)
-                .setSuperEntityClass(SUPER_ENTITY_CLASS)
+//                .setSuperControllerClass(SUPER_CONTROLLER_CLASS)
+//                .setSuperServiceClass(SUPER_SERVICE_CLASS)
+//                .setSuperEntityClass(SUPER_ENTITY_CLASS)
                 // 写于父类中的公共字段
-                .setSuperEntityColumns("id" )
+//                .setSuperEntityColumns("id" )
                 // 使用lombok
                 .setEntityLombokModel(true)
                 // rest风格

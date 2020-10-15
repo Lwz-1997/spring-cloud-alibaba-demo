@@ -1,3 +1,6 @@
+server:
+  port: 9005
+
 spring:
   redis:
     host: 47.100.185.35
