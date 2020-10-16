@@ -23,7 +23,7 @@ public class CacheController {
     @PostMapping("set")
     public boolean setCache(String key, Object value, long time) {
 //        value=new User(12,"lily");
-        return redisUtils.set(key,value , time);
+        return redisUtils.set(key, value, time);
     }
 
     @GetMapping("get")

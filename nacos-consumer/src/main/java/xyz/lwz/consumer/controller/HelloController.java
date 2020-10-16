@@ -16,7 +16,7 @@ public class HelloController {
     HelloFeign helloFeign;
 
     @GetMapping(value = "hello")
-    String hello(){
-        return helloFeign.hello();
+    String hello(String text){
+        return helloFeign.hello(text);
     }
 }

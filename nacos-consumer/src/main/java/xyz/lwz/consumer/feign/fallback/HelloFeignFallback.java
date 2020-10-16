@@ -10,7 +10,7 @@ import xyz.lwz.consumer.feign.HelloFeign;
 @Component
 public class HelloFeignFallback implements HelloFeign {
     @Override
-    public String hello() {
+    public String hello(String text) {
         return "feign调用失败";
     }
 }

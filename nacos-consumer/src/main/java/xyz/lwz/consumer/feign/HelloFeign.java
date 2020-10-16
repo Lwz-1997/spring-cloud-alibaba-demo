@@ -2,6 +2,7 @@ package xyz.lwz.consumer.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import xyz.lwz.consumer.feign.fallback.HelloFeignFallback;
 
 /**
@@ -13,8 +14,9 @@ public interface HelloFeign {
 
     /**
      * feign接口调用
+     *
      * @return String
      */
-    @GetMapping(value = "hello")
-    String hello();
+    @GetMapping(value = "nacos/hello")
+    String hello(@RequestParam("text") String text);
 }
