@@ -66,7 +66,7 @@ public class CodeGenerator {
     /**
      * 指定生成的表名
      */
-    private static final String[] TABLE_NAMES = new String[]{"user"};
+    private static final String[] TABLE_NAMES = new String[]{"tsys_log"};
 
     public static void main(String[] args) {
         // serviceNameStartWithI：user -> UserService, 设置成true: user -> IUserService
