@@ -13,10 +13,10 @@ import xyz.lwz.provider.api.HelloApi;
 public class HelloController {
 
     @DubboReference(version = "1.0.0")
-    HelloApi helloService;
+    HelloApi helloApi;
 
     @GetMapping(value = "/hello")
     public String hello(){
-        return helloService.hello();
+        return helloApi.hello();
     }
 }

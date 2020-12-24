@@ -23,45 +23,45 @@ public class CodeGenerator {
     /**
      * 数据库连接信息
      */
-    private static final String DB_URL = "jdbc:mysql://47.100.185.35:3306/blog?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true" ;
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver" ;
-    private static final String USERNAME = "root" ;
-    private static final String PASSWORD = "dytqce94lwz" ;
+    private static final String DB_URL = "jdbc:mysql://47.100.185.35:3306/blog?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "dytqce94lwz";
 
     /**
      * 项目地址
      */
-    private static final String PROJECT_PATH = "E:/code-github/study/" ;
+    private static final String PROJECT_PATH = "E:/code-github/study/";
 
     /**
      * 项目名
      */
-    private static final String PROJECT_NAME = "spring-cloud-alibaba-demo/mybatis-plus-generator" ;
+    private static final String PROJECT_NAME = "spring-cloud-alibaba-demo/mybatis-plus-generator";
 
     /**
      * 指定包名
      */
-    private static final String PACKAGE_NAME = "xyz.lwz" ;
+    private static final String PACKAGE_NAME = "xyz.lwz";
 
     /**
      * controller基础类
      */
-    private static final String SUPER_CONTROLLER_CLASS = PACKAGE_NAME + ".common.BaseController" ;
+    private static final String SUPER_CONTROLLER_CLASS = PACKAGE_NAME + ".common.BaseController";
 
     /**
      * service基础类
      */
-    private static final String SUPER_SERVICE_CLASS = PACKAGE_NAME + ".common.BaseService" ;
+    private static final String SUPER_SERVICE_CLASS = PACKAGE_NAME + ".common.BaseService";
 
     /**
      * entity基础类
      */
-    private static final String SUPER_ENTITY_CLASS = PACKAGE_NAME + ".common.BaseEntity" ;
+    private static final String SUPER_ENTITY_CLASS = PACKAGE_NAME + ".common.BaseEntity";
 
     /**
      * 作者名
      */
-    private static final String AUTHOR = "liwz" ;
+    private static final String AUTHOR = "liwz";
 
     /**
      * 指定生成的表名
@@ -69,7 +69,6 @@ public class CodeGenerator {
     private static final String[] TABLE_NAMES = new String[]{"tsys_log"};
 
     public static void main(String[] args) {
-        // serviceNameStartWithI：user -> UserService, 设置成true: user -> IUserService
         new CodeGenerator().generateByTables(TABLE_NAMES);
     }
 
@@ -101,7 +100,10 @@ public class CodeGenerator {
      * @param packageConfig    包名配置
      * @author Terry
      */
-    private void autoGenerator(DataSourceConfig dataSourceConfig, StrategyConfig strategyConfig, GlobalConfig config, PackageConfig packageConfig) {
+    private void autoGenerator(DataSourceConfig dataSourceConfig,
+                               StrategyConfig strategyConfig,
+                               GlobalConfig config,
+                               PackageConfig packageConfig) {
         new AutoGenerator()
                 .setGlobalConfig(config)
                 .setDataSource(dataSourceConfig)
@@ -120,10 +122,10 @@ public class CodeGenerator {
     private PackageConfig getPackageConfig() {
         return new PackageConfig()
                 .setParent(PACKAGE_NAME)
-                .setXml("mapper.xml" )
-                .setMapper("mapper" )
-                .setController("controller" )
-                .setEntity("entity" );
+                .setXml("mapper.xml")
+                .setMapper("mapper")
+                .setController("controller")
+                .setEntity("entity");
     }
 
     /**
@@ -148,7 +150,7 @@ public class CodeGenerator {
                 // 是否打开输出目录
                 .setOpen(false);
         // 设置service名
-        globalConfig.setServiceName("%sService" );
+        globalConfig.setServiceName("%sService");
         return globalConfig;
     }
 
@@ -159,7 +161,7 @@ public class CodeGenerator {
      * @author Terry
      */
     private String getOutputDir() {
-        return PROJECT_PATH + PROJECT_NAME + "/src/main/java/" ;
+        return PROJECT_PATH + PROJECT_NAME + "/src/main/java/";
     }
 
     /**
@@ -184,7 +186,7 @@ public class CodeGenerator {
 //                .setSuperServiceClass(SUPER_SERVICE_CLASS)
 //                .setSuperEntityClass(SUPER_ENTITY_CLASS)
                 // 写于父类中的公共字段
-//                .setSuperEntityColumns("id" )
+//                .setSuperEntityColumns("id")
                 // 使用lombok
                 .setEntityLombokModel(true)
                 // rest风格
