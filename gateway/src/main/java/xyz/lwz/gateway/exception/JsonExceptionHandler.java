@@ -109,8 +109,8 @@ public class JsonExceptionHandler implements ErrorWebExceptionHandler {
         ServerRequest newRequest = ServerRequest.create(exchange, this.messageReaders);
         return RouterFunctions.route(RequestPredicates.all(), this::renderErrorResponse).route(newRequest)
                 .switchIfEmpty(Mono.error(ex))
-                .flatMap((handler) -> handler.handle(newRequest))
-                .flatMap((response) -> write(exchange, response));
+                .flatMap(handler -> handler.handle(newRequest))
+                .flatMap(response -> write(exchange, response));
 
     }
 
