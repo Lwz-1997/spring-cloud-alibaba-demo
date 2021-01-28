@@ -1,0 +1,27 @@
+server:
+  port: 9003
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://192.168.252.131:8848
+
+
+# 服务监控检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

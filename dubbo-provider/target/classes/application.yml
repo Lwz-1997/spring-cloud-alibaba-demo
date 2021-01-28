@@ -1,0 +1,21 @@
+server:
+  port: 9002
+dubbo:
+  scan:
+    # 这个属性必须有,代表被扫描暴露服务的包
+    base-packages: xyz.lwz.provider.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://192.168.252.131:8848
+  config-center:
+    group: DEFAULT_GROUP
+    namespace: 987b463c-15a4-4d3a-9049-64abf322d67c
+
+# 服务监控检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

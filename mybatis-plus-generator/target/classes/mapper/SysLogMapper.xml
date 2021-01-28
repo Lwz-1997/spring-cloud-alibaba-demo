@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lwz.mapper.SysLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="xyz.lwz.entity.SysLogDto">
+        <id column="URID" property="urid"/>
+        <result column="TENANTID" property="tenantid"/>
+        <result column="ORGID" property="orgid"/>
+        <result column="TRANSCODE" property="transcode"/>
+        <result column="SUBTRANSCODE" property="subtranscode"/>
+        <result column="BUSINESSTYPE" property="businesstype"/>
+        <result column="BUSINESSURID" property="businessurid"/>
+        <result column="URL" property="url"/>
+        <result column="PARAMS" property="params"/>
+        <result column="CONTENT" property="content"/>
+        <result column="STATUS" property="status"/>
+        <result column="RESULTS" property="results"/>
+        <result column="CREATEDBY" property="createdby"/>
+        <result column="CREATEDON" property="createdon"/>
+        <result column="IPADDRESS" property="ipaddress"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        URID, TENANTID, ORGID, TRANSCODE, SUBTRANSCODE, BUSINESSTYPE, BUSINESSURID, URL, PARAMS, CONTENT, STATUS, RESULTS, CREATEDBY, CREATEDON, IPADDRESS
+    </sql>
+
+</mapper>
